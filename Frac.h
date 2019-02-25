@@ -36,6 +36,29 @@ public:
     //string constructor definition outside
     Frac(string s);    
     
+    //copy constructor
+    Frac(const Frac& rhs)
+        { num = rhs.num; den = rhs.den; }
+    
+    // assignment operator
+    Frac operator=(const Frac& rhs)
+        { num = rhs.num; den = rhs.den; }
+    
+    //mutators
+    void setNum(int n) { num = n; }
+    void setDen(int d) { den = d; }
+    
+    //accessors
+    int getNum() const { return num; }
+    int getDen() const { return den; }
+    
 };
+
+Frac:: Frac(string s) 
+{
+    stringstream ss(s);
+    //s << getNum() << "/" << getDen();
+    //return s.str();
+}
 
 #endif
