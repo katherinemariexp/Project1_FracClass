@@ -76,6 +76,10 @@ public:
     operator int() { return (num) / den; }
     operator float() { return ((float) num) / den; }
     operator double() { return ((double) num) / den; }
+    
+    //Friends step 3 - Friend Function Declaration
+    friend ostream& operator << (ostream& strm, const Frac& f);
+    friend istream& operator >> (istream& strm, Frac& f);
 };
 
 Frac::Frac(string s) 
