@@ -52,9 +52,21 @@ public:
     int getNum() const { return num; }
     int getDen() const { return den; }
     
+    //overloaded operator functions
+    Frac operator + (Frac &rhs);
+    Frac operator - (Frac &rhs);
+    Frac operator * (Frac &rhs);
+    Frac operator / (Frac &rhs);
+    
+    //++ & --
+    Frac operator++();
+    Frac operator++(int);
+    Frac operator--();
+    Frac operator--(int);
+    
 };
 
-Frac:: Frac(string s) 
+Frac::Frac(string s) 
 {
     stringstream ss(s);
     //s << getNum() << "/" << getDen();
