@@ -25,14 +25,16 @@ public:
     Frac()
         { num = 0; den = 1; }
         
-    
-    //1 Argument - int numerator onky, den set at 1
+    //1 Argument - int numerator only, den set at 1
     Frac(int n) 
         { num = n; den = 1; }
+        
     //2 Arg. - num, den 
     Frac(int n, int d) 
         { num = n; den = d; }
         
+    //string constructor definition outside
+    Frac(string s);    
     
 };
 
