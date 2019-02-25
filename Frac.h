@@ -53,10 +53,10 @@ public:
     int getDen() const { return den; }
     
     //overloaded operator functions
-    Frac operator + (Frac &rhs);
-    Frac operator - (Frac &rhs);
-    Frac operator * (Frac &rhs);
-    Frac operator / (Frac &rhs);
+    Frac operator + (const Frac &rhs);
+    Frac operator - (const Frac &rhs);
+    Frac operator * (const Frac &rhs);
+    Frac operator / (const Frac &rhs);
     
     //++ & --
     Frac operator++();
@@ -64,6 +64,18 @@ public:
     Frac operator--();
     Frac operator--(int);
     
+    //comparator
+    bool operator == (const Frac &f2);
+    bool operator != (const Frac &f2);
+    bool operator < (const Frac &f2);
+    bool operator > (const Frac &f2);
+    bool operator <= (const Frac &f2);
+    bool operator >= (const Frac &f2);
+    
+    //Type conversion operators
+    operator int() { return (num) / den; }
+    operator float() { return ((float) num) / den; }
+    operator double() { return ((double) num) / den; }
 };
 
 Frac::Frac(string s) 
