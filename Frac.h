@@ -2,6 +2,7 @@
 #define FRAC_H
 #include <iostream>
 #include <sstream>
+#include <cmath>
 
 using namespace std;
 
@@ -18,7 +19,9 @@ private:
     int num; //to hold numerator
     int den; //to hold denominator
     long gcd(long a, long b);
-    //Frac lowTerms(Frac &f); 
+        //simplify frac
+    void lowTerms(int &num, int &den); 
+ 
     
 public:
     //def constructor
@@ -80,24 +83,48 @@ public:
     //Friends step 3 - Friend Function Declaration
     friend ostream &operator << (ostream& strm, const Frac& f);
     friend istream &operator >> (istream& strm, Frac& f);
+    
+
 };
 
-/*Frac Frac::lowTerms(const Frac &f)
+
+void Frac::lowTerms(int &num, int &den)
 {
-    int gcd = 0;
-    if (den == 0)
-        gcd = num;
-    else 
-        gcd = fmod(num, den);
+    int low;
+    int high;
     
-    return gcd;
-} */
+    if(num > den)
+    {
+        low = den;
+        high = num;
+    }
+    else
+    {
+        high = den;
+        low = num;
+    }
+        
+    for(int i = low; i > 0; i--)
+    {
+        if((low % i == 0) && (high % i ==0))
+        {
+            num = num / i;
+            den = den / i;
+        }
+    }
+} 
 
 Frac::Frac(string s) 
 {
     stringstream ss(s);
-    //s << getNum() << "/" << getDen();
-    //return s.str();
+    ss >> num;
+    char peekchar = ss.peek();
+    if (ss && peekchar == '/')
+    {
+        ss.get();
+        ss >> den;
+    }
+    
 }
 
 Frac Frac::operator + (const Frac &rhs)
@@ -105,7 +132,7 @@ Frac Frac::operator + (const Frac &rhs)
     Frac temp;
     temp.num = (num * rhs.den) + (rhs.num * den);
     temp.den = den * rhs.den;
-   // temp.lowTerms(*this);
+    temp.lowTerms(temp.num, temp.den);
     return temp;
 }
 
@@ -114,7 +141,7 @@ Frac Frac::operator - (const Frac &rhs)
     Frac temp;
     temp.num = (num * rhs.den) - (rhs.num * den);
     temp.den = den * rhs.den;
-    //temp.simplify();
+    temp.lowTerms(temp.num, temp.den);
     return temp;
 }
 
@@ -123,7 +150,7 @@ Frac Frac::operator * (const Frac &rhs)
     Frac temp;
     temp.num = num * rhs.num;
     temp.den = den * rhs.den;
-    //temp.simplify();
+    temp.lowTerms(temp.num, temp.den);
     return temp;
 }
 
@@ -132,14 +159,14 @@ Frac Frac::operator / (const Frac &rhs)
     Frac temp;
     temp.num = num * rhs.den;
     temp.den = den * rhs.num;
-    //temp.simplify();
+    temp.lowTerms(temp.num, temp.den);
     return temp;
 }
 
 Frac Frac::operator++()
 {
     num += den;
-    //simplify();
+    lowTerms(num, den);
     return *this;
 }
 
@@ -147,14 +174,14 @@ Frac Frac::operator++(int)
 {
     Frac temp(num, den);
     num += den;
-    //simplify();
+    lowTerms(temp.num, temp.den);
     return *this;
 }
 
 Frac Frac::operator--()
 {
     num -=den;
-    //simplify;
+    lowTerms(num, den);
     return *this;
 }
 
@@ -162,7 +189,7 @@ Frac Frac::operator--(int)
 {
     Frac temp(num, den);
     num -=den;
-    //simplify;
+    lowTerms(temp.num, temp.den);
     return *this;
 }
 
@@ -271,7 +298,7 @@ istream &operator >> (istream &strm, Frac &rhs)
     strm >> rhs.num;
     strm >> c;
     strm >> rhs.den;
-    //rhs.simplify? func goes here?
+    rhs.lowTerms(rhs.num, rhs.den);
     return strm;
     
 }

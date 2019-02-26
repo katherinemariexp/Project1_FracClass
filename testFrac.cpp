@@ -30,14 +30,18 @@ int main()
     cin >> den;
     y.setDen(den);
     
-    cout << "Created Frac x(3, 4) as " << x.getNum() << "/" << x.getDen() << endl;
+    cout << endl << "Created Frac x(3, 4) as " << x.getNum() << "/" << x.getDen() << endl;
     cout << "Created Frac y(1, 2) as " << y.getNum() << "/" << y.getDen() << endl << endl;
     
+    cout << endl << "Increment and decrement Frac x: " << endl;
+    x++;
+    cout << "Frac x incremented is: " << x << endl;
+    x--;
+    cout << "Frac x decremented back to the original value is: " << x << endl << endl;
     
-    
-    //string constructor?
-    //Frac s("6/7");
-    //cout << "String constructed: s: " << s;
+    //string constructor test
+    Frac s("6/7");
+    cout << "String constructed: s: " << s << endl << endl;
     
     Frac z(x);
     cout << "Copy constructed z as x: " << z << endl << endl;
