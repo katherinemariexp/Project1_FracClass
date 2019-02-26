@@ -89,6 +89,42 @@ Frac::Frac(string s)
     //return s.str();
 }
 
+Frac Frac::operator + (const Frac &rhs)
+{
+    Frac temp;
+    temp.num = (num * rhs.den) + (rhs.num * den);
+    temp.den = den * rhs.den;
+    //temp.simplify()?
+    return temp;
+}
+
+Frac Frac::operator - (const Frac &rhs)
+{
+    Frac temp;
+    temp.num = (num * rhs.den) - (rhs.num * den);
+    temp.den = den * rhs.den;
+    //temp.simplify();
+    return temp;
+}
+
+Frac Frac::operator * (const Frac &rhs)
+{
+    Frac temp;
+    temp.num = num * rhs.num;
+    temp.den = den * rhs.den;
+    //temp.simplify();
+    return temp;
+}
+
+Frac Frac::operator / (const Frac &rhs)
+{
+    Frac temp;
+    temp.num = num * rhs.den;
+    temp.den = den * rhs.num;
+    //temp.simplify();
+    return temp;
+}
+
 ostream &operator << (ostream &strm, const Frac &rhs)
 {
     strm << rhs.num << "/" << rhs.den;
