@@ -9,18 +9,38 @@ using namespace std;
 
 int main()
 {
-    Frac x(3, 4);
-    Frac y(1, 2);
+    Frac x;
+    Frac y;
+    int num;
+    int den;
     
-    cout << "Created Frac x(3, 4) as " << x << endl;
-    cout << "Created Frac y(1, 2) as " << y << endl;
+    cout << endl << "Testing accessors and mutators by entering a fraction." 
+         << endl
+         << "Please enter the numerator for Frac x: ";
+    cin >> num;
+    x.setNum(num);
+    cout << "Please enter the denominator for Frac x: ";
+    cin >> den;
+    x.setDen(den);
+   
+    cout << "Please enter the numerator for Frac y: ";
+    cin >> num;
+    y.setNum(num);
+    cout << "Please enter the denominator for Frac y: ";
+    cin >> den;
+    y.setDen(den);
+    
+    cout << "Created Frac x(3, 4) as " << x.getNum() << "/" << x.getDen() << endl;
+    cout << "Created Frac y(1, 2) as " << y.getNum() << "/" << y.getDen() << endl << endl;
+    
+    
     
     //string constructor?
     //Frac s("6/7");
     //cout << "String constructed: s: " << s;
     
     Frac z(x);
-    cout << "Copy constructed z as x: " << z << endl;
+    cout << "Copy constructed z as x: " << z << endl << endl;
     
     //fix math
     Frac v = x + y;
@@ -33,7 +53,55 @@ int main()
     cout << "x * y is: " << b << endl;
     
     Frac c = x / y;
-    cout << "x / y is: " << c << endl;
+    cout << "x / y is: " << c << endl << endl;;
+    
+    cout << "Testing whether x is ==, !=, <, >, <=, >= y." << endl;
+    if (x == y)
+        cout << "x is equal to y." << endl;
+    if (x != y)
+        cout << "x is not equal to y." << endl;
+    if (x > y)
+        cout << "x is greater than y." << endl;
+    if (x < y)
+        cout << "x is less than y." << endl;
+    if (x >= y)
+        cout << "x is greater than or equal to y." << endl;
+    if (x <= y)
+        cout << "x is less than or equal to y." << endl;
+    
+    cout << endl << "Please observe the outputs of identical commands " 
+         << "executed in one statement v. separated statements." << endl;
+    Frac f(5,6);
+    cout << f << " "
+        << --f << " "
+        << f << " "
+        << ++f << " "
+        << --f << " "
+        << ++f << endl;
+        
+    cout << f << " ";
+    cout << --f << " ";
+    cout << f << " ";
+    cout << ++f << " ";
+    cout << --f << " ";
+    cout << ++f << endl;
+    
+    cout << "Why the output for these two identical sequences are not the same?"
+        << endl;
+    Frac f1("5/6");
+    cout << "This sequence is in one statement: "
+        << f1 << " " << f1-- << " " << f1 << " "
+        << f1++ << " " << f1-- << " " << f1++ << endl
+        << "The one below is broken into 6 steps: ";
+    cout << " " << f1;
+    cout << " " << f1--;
+    cout << " " << f1;
+    cout << " " << f1++;
+    cout << " " << f1--;
+    cout << " " << f1++;
+    
+    
+    
     
     return 0;
 }

@@ -18,7 +18,7 @@ private:
     int num; //to hold numerator
     int den; //to hold denominator
     long gcd(long a, long b);
-    Frac lowTerms(Frac &f); 
+    //Frac lowTerms(Frac &f); 
     
 public:
     //def constructor
@@ -82,6 +82,17 @@ public:
     friend istream &operator >> (istream& strm, Frac& f);
 };
 
+/*Frac Frac::lowTerms(const Frac &f)
+{
+    int gcd = 0;
+    if (den == 0)
+        gcd = num;
+    else 
+        gcd = fmod(num, den);
+    
+    return gcd;
+} */
+
 Frac::Frac(string s) 
 {
     stringstream ss(s);
@@ -94,7 +105,7 @@ Frac Frac::operator + (const Frac &rhs)
     Frac temp;
     temp.num = (num * rhs.den) + (rhs.num * den);
     temp.den = den * rhs.den;
-    //temp.simplify()?
+   // temp.lowTerms(*this);
     return temp;
 }
 
@@ -125,6 +136,129 @@ Frac Frac::operator / (const Frac &rhs)
     return temp;
 }
 
+Frac Frac::operator++()
+{
+    num += den;
+    //simplify();
+    return *this;
+}
+
+Frac Frac::operator++(int)
+{
+    Frac temp(num, den);
+    num += den;
+    //simplify();
+    return *this;
+}
+
+Frac Frac::operator--()
+{
+    num -=den;
+    //simplify;
+    return *this;
+}
+
+Frac Frac::operator--(int)
+{
+    Frac temp(num, den);
+    num -=den;
+    //simplify;
+    return *this;
+}
+
+bool Frac::operator == (const Frac &f2)
+{
+    bool status;
+    if(num == f2.num && den == f2.den)
+    {
+        status = true;
+    }
+    else
+    {
+        status = false;
+    }
+    return status;
+}
+
+bool Frac::operator != (const Frac &f2)
+{
+    bool status;
+    if(num != f2.num || den != f2.den)
+    {
+        status = true;
+    }
+    else
+    {
+        status = false;
+    }
+    return status;
+}
+
+bool Frac::operator < (const Frac &f2)
+{
+    bool status;
+    if(num < f2.num && den < f2.den)
+    {
+        status = true;
+    }
+    else
+    {
+        status = false;
+    }
+    return status;
+}
+
+bool Frac::operator > (const Frac &f2)
+{
+    bool status;
+    if(num > f2.num && den > f2.den)
+    {
+        status = true;
+    }
+    else
+    {
+        status = false;
+    }
+    return status;
+}
+
+bool Frac::operator <= (const Frac &f2)
+{
+    bool status;
+    if(num < f2.num && den < f2.den)
+    {
+        status = true;
+    }
+    else if (num == f2.num && den == f2.den)
+    {
+        status = true;
+    }
+    else
+    {
+        status = false;
+    }
+    return status;
+}
+
+bool Frac::operator >= (const Frac &f2)
+{
+    bool status;
+    if(num > f2.num && den > f2.den)
+    {
+        status = true;
+    }
+    else if (num == f2.num && den == f2.den)
+    {
+        status = true;
+    }
+    else 
+    {
+        status = false;
+    }
+    return status;
+}
+
+    
 ostream &operator << (ostream &strm, const Frac &rhs)
 {
     strm << rhs.num << "/" << rhs.den;
