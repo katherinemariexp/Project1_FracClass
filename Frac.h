@@ -10,8 +10,8 @@ using namespace std;
 class Frac;
 
 //Friend Step 2 Forward Declaration of Friend Function
-ostream &operator << (ostream &, const Frac &);
-istream &operator >> (istream &, Frac &);
+ostream &operator << (ostream &strm, const Frac &);
+istream &operator >> (istream &strm, Frac &);
 
 class Frac {
 private:
@@ -78,8 +78,8 @@ public:
     operator double() { return ((double) num) / den; }
     
     //Friends step 3 - Friend Function Declaration
-    friend ostream& operator << (ostream& strm, const Frac& f);
-    friend istream& operator >> (istream& strm, Frac& f);
+    friend ostream &operator << (ostream& strm, const Frac& f);
+    friend istream &operator >> (istream& strm, Frac& f);
 };
 
 Frac::Frac(string s) 
@@ -87,6 +87,23 @@ Frac::Frac(string s)
     stringstream ss(s);
     //s << getNum() << "/" << getDen();
     //return s.str();
+}
+
+ostream &operator << (ostream &strm, const Frac &rhs)
+{
+    strm << rhs.num << "/" << rhs.den;
+    return strm;
+}
+
+istream &operator >> (istream &strm, Frac &rhs)
+{
+    char c;
+    strm >> rhs.num;
+    strm >> c;
+    strm >> rhs.den;
+    //rhs.simplify? func goes here?
+    return strm;
+    
 }
 
 #endif
