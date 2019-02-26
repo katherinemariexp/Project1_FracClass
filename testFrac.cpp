@@ -1,20 +1,18 @@
 #include "Frac.h"
-
 #include <iostream>
 #include <vector> 
 #include <sstream>
 
 using namespace std;
 
-
 int main()
 {
     Frac x;
     Frac y;
-    int num;
+    float num;
     int den;
     
-    cout << endl << "Testing accessors and mutators by entering a fraction." 
+    cout << endl << "Testing accessors and mutators by entering a fraction. Also testing type conversion operators: " 
          << endl
          << "Please enter the numerator for Frac x: ";
     cin >> num;
@@ -46,7 +44,6 @@ int main()
     Frac z(x);
     cout << "Copy constructed z as x: " << z << endl << endl;
     
-    //fix math
     Frac v = x + y;
     cout << "x + y is: " << v << endl;
     
@@ -88,7 +85,7 @@ int main()
     cout << f << " ";
     cout << ++f << " ";
     cout << --f << " ";
-    cout << ++f << endl;
+    cout << ++f << endl << endl;
     
     cout << "Why the output for these two identical sequences are not the same?"
         << endl;
@@ -103,9 +100,6 @@ int main()
     cout << " " << f1++;
     cout << " " << f1--;
     cout << " " << f1++;
-    
-    
-    
     
     return 0;
 }
