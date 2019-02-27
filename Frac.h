@@ -61,12 +61,11 @@ public:
     
     operator int() { return (num) / den; }
     operator float() 
-    {  
+    {
         float temp;
-        temp = num / den;
+        temp = static_cast<float>(num) / static_cast<float>(den);
         return temp;
     }
-
     friend ostream &operator << (ostream& strm, const Frac& f);
     friend istream &operator >> (istream& strm, Frac& f);
     
