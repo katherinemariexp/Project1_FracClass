@@ -9,7 +9,7 @@ int main()
 {
     Frac x;
     Frac y;
-    Frac f2(7,2), f3(7,2);
+    Frac f2(7,2), f3(7,2); //for testing type conversions
     int num;
     int den;
     
@@ -31,7 +31,7 @@ int main()
     
     cout << endl << "Created Frac x(3, 4) as " << x.getNum() << "/" << x.getDen() << endl;
     cout << "Created Frac y(1, 2) as " << y.getNum() << "/" << y.getDen() << endl << endl;
-         
+        
     
     cout << endl << "Increment and decrement Frac x: " << endl;
     x++;
@@ -73,7 +73,7 @@ int main()
         cout << "x is less than or equal to y." << endl;
     
     cout << endl << "Please observe the outputs of identical commands " 
-         << "executed in one statement v. separated statements. Frac (5,6)" << endl;
+         << "executed in one statement v. separated statements. Testing for Frac (5,6)" << endl;
     Frac f(5,6);
     cout << f << " "
         << --f << " "
@@ -89,7 +89,7 @@ int main()
     cout << --f << " ";
     cout << ++f << endl << endl;
     
-    cout << "Why the output for these two identical sequences are not the same? Frac (\"5/6\")"
+    cout << "Why the output for these two identical sequences are not the same? Testing for string Frac (\"5/6\")"
         << endl;
     Frac f1("5/6");
     cout << "This sequence is in one statement: "
@@ -103,7 +103,7 @@ int main()
     cout << " " << f1--;
     cout << " " << f1++;
     
-    cout << endl << "Type conversion testing: " 
+    cout << endl << endl << "Type conversion testing: " 
          << "First frac: " << f2 << " Second frac: " << f3 << endl
          << "First frac as an integer: " << int(f2) << endl 
          << "Second frac as a double: " << double(f3);
