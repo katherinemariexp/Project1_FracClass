@@ -1,3 +1,11 @@
+// Description: Assignment 3/ Project 1 Fractional Numbers Class
+// Author: Katherine-Marie Gonzales
+// COMSC 200 Section 5001
+// Date: February 27, 2019
+// Status : Complete 
+
+// Frac.h
+
 #ifndef FRAC_H
 #define FRAC_H
 #include <iostream>
@@ -5,7 +13,6 @@
 #include <cmath>
 
 using namespace std;
-
 
 class Frac;
 
@@ -158,8 +165,9 @@ Frac Frac::operator++(int)
     Frac temp(num, den);
     num += den;
     lowTerms(temp.num, temp.den);
-    return *this;
+    return temp;
 }
+
 
 Frac Frac::operator--()
 {
@@ -171,10 +179,11 @@ Frac Frac::operator--()
 Frac Frac::operator--(int)
 {
     Frac temp(num, den);
-    num -=den;
+    num -= den;
     lowTerms(temp.num, temp.den);
-    return *this;
+    return temp;
 }
+
 
 bool Frac::operator == (const Frac &f2)
 {
@@ -285,3 +294,9 @@ istream &operator >> (istream &strm, Frac &rhs)
 }
 
 #endif
+
+/* Special ++/-- test
+The two statements appear identical, but are not actually identical. 
+When it is listed as one cout statement, the order in which the ++ and -- operators are evaluated is not defined.
+When listed as multiple statements, there are sequence points that define the order in which the program is evaluated. 
+*/

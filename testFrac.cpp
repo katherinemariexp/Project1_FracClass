@@ -1,3 +1,11 @@
+// Description: Assignment 3/ Project 1 Fractional Numbers Class
+// Author: Katherine-Marie Gonzales
+// COMSC 200 Section 5001
+// Date: February 27, 2019
+// Status : Complete 
+
+// testFrac.cpp
+
 #include "Frac.h"
 #include <iostream>
 #include <vector> 
@@ -18,16 +26,37 @@ int main()
          << "Please enter the numerator for Frac x: ";
     cin >> num;
     x.setNum(num);
+    
     cout << "Please enter the denominator for Frac x: ";
     cin >> den;
-    x.setDen(den);
+    if (den != 0)
+    {
+        x.setDen(den);
+    }
+    else
+    {
+        cout << "Denominator cannot be zero. Please choose another denominator: ";
+        cin >> den;
+        x.setDen(den);
+    }
    
-    cout << "Please enter the numerator for Frac y: ";
+    cout << endl << "Please enter the numerator for Frac y: ";
     cin >> num;
     y.setNum(num);
+    
     cout << "Please enter the denominator for Frac y: ";
     cin >> den;
-    y.setDen(den);
+        if (den != 0)
+    {
+        y.setDen(den);
+    }
+    else
+    {
+        cout << "Denominator cannot be zero. Please choose another denominator: ";
+        cin >> den;
+        y.setDen(den);
+    }
+   
     
     cout << endl << "Created Frac x(3, 4) as " << x.getNum() << "/" << x.getDen() << endl;
     cout << "Created Frac y(1, 2) as " << y.getNum() << "/" << y.getDen() << endl << endl;
@@ -38,10 +67,6 @@ int main()
     cout << "Frac x incremented is: " << x << endl;
     x--;
     cout << "Frac x decremented back to the original value is: " << x << endl << endl;
-    
-    //string constructor test
-    Frac s("6/7");
-    cout << "String constructed: s: " << s << endl << endl;
     
     Frac z(x);
     cout << "Copy constructed z as x: " << z << endl << endl;
@@ -60,20 +85,38 @@ int main()
     
     cout << "Testing whether x is ==, !=, <, >, <=, >= y." << endl;
     if (x == y)
+    {
         cout << "x is equal to y." << endl;
+    }
+    
     if (x != y)
+    {
         cout << "x is not equal to y." << endl;
+    }
+    
     if (x > y)
+    {
         cout << "x is greater than y." << endl;
+    }
+    
     if (x < y)
+    {
         cout << "x is less than y." << endl;
+    }
+    
     if (x >= y)
+    {
         cout << "x is greater than or equal to y." << endl;
+    }
+    
     if (x <= y)
+    {
         cout << "x is less than or equal to y." << endl;
+    }
     
     cout << endl << "Please observe the outputs of identical commands " 
-         << "executed in one statement v. separated statements. Testing for Frac (5,6)" << endl;
+         << "executed in one statement v. separated statements." << endl
+         << "Testing for Frac (5,6) using prefix ++/--" << endl;
     Frac f(5,6);
     cout << f << " "
         << --f << " "
@@ -89,7 +132,13 @@ int main()
     cout << --f << " ";
     cout << ++f << endl << endl;
     
-    cout << "Why the output for these two identical sequences are not the same? Testing for string Frac (\"5/6\")"
+    
+    //string constructor test
+    Frac s("6/7");
+    cout << "String constructed: s: " << s << endl << endl;
+    
+    cout << "Why the output for these two identical sequences are not the same?" << endl 
+         << "Testing for string Frac (\"5/6\") using postfix ++ and --"
         << endl;
     Frac f1("5/6");
     cout << "This sequence is in one statement: "
